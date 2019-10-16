@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Button, Form, Grid } from "semantic-ui-react";
 import loginService from "../services/login";
+import receiverService from "../services/receiver";
+import { withRouter } from "react-router-dom";
 
 const Login = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [loggedUser, setLoggedUser] = useState(null);
+  const [user, setUser] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const loginSender = async event => {
     event.preventDefault();
@@ -14,12 +17,14 @@ const Login = props => {
         email,
         password
       });
-      if (user.status !== 401) {
-        props.history.push(`/`);
-        localStorage.setItem("usertoken", user);
-      }
-    } catch (exeption) {
-      return console.log("Wrong credentials");
+
+      window.localStorage.setItem("loggedUser", JSON.stringify(user));
+      receiverService.setToken(user.token);
+      setUser(user);
+
+      props.history.push(`/rates`);
+    } catch (e) {
+      return console.log(e, "Wrong credentials");
     }
   };
 
@@ -50,8 +55,15 @@ const Login = props => {
 
           <Button type="submit">Submit</Button>
         </Form>
+        <p>
+          New To Money Transfer?{" "}
+          <Button primary onClick={() => props.history.push(`/register`)}>
+            Register
+          </Button>
+        </p>
       </Grid.Column>
     </Grid>
   );
 };
-export default Login;
+
+export default withRouter(Login);

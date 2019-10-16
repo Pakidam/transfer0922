@@ -14,18 +14,15 @@ loginRouter.post("/", async (req, res) => {
     return res.status(401).json({
       error: "Invalid email or password"
     });
-  } else {
-    const userForToken = {
-      email: user.email,
-      id: user._id
-    };
-
-    const token = jwt.sign(userForToken, process.env.SECRET);
-
-    res
-      .status(200)
-      .send({ token, email: user.email, firstName: user.firstName });
   }
+  const userForToken = {
+    email: user.email,
+    id: user._id
+  };
+
+  const token = jwt.sign(userForToken, process.env.SECRET);
+
+  res.status(200).send({ token, email: user.email, firstName: user.firstName });
 });
 
 module.exports = loginRouter;

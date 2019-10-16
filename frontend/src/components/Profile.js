@@ -1,48 +1,34 @@
 import React, { useState } from "react";
 import { Button, Form, Grid } from "semantic-ui-react";
-import registerService from "../services/register";
+import receiverService from "../services/receiver";
 import { withRouter } from "react-router-dom";
 
-const Register = props => {
-  /*
-  const [inputValues, setInputValues] = useState({
-    firstName: "",
-    middleName: " ",
-    lastName: " ",
-    email: " ",
-    password: " ",
-    dob: " "
-  });
-*/
-
+const Profile = props => {
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [dob, setDob] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [dob, setDob] = useState("");
+  const [tel, setTel] = useState("");
+  const [address, setAddress] = useState("");
+  const [country, setCountry] = useState("");
 
-  /*
-  const handleOnChange = event => {
-    const { name, value } = event.target;
-    setInputValues({ ...inputValues, [name]: value });
-  };
-  */
-
-  const createSender = async event => {
+  const createReceiver = async event => {
     event.preventDefault();
+
     try {
-      const result = await registerService.register({
+      const result = await receiverService.create({
         firstName,
         middleName,
         lastName,
-        dob,
         email,
-        password
+        dob,
+        tel,
+        address,
+        country
       });
-      if (result.status !== 409) {
-        props.history.push(`/login`);
-      }
+
+      props.history.push(`/login`);
     } catch (exception) {
       return console.log("Wrong credentials");
     }
@@ -51,9 +37,9 @@ const Register = props => {
   return (
     <Grid textAlign="center" style={{ height: "50vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-        <h2> Registration page</h2>
+        <h2> Add Receiver</h2>
 
-        <Form size="large" onSubmit={createSender}>
+        <Form size="large" onSubmit={createReceiver}>
           <Form.Field>
             <label>First Name</label>
             <input
@@ -79,14 +65,6 @@ const Register = props => {
             />
           </Form.Field>
           <Form.Field>
-            <label>Date of birth</label>
-            <input
-              name="dob"
-              value={dob}
-              onChange={e => setDob(e.target.value)}
-            />
-          </Form.Field>
-          <Form.Field>
             <label>Email</label>
             <input
               name="email"
@@ -94,21 +72,49 @@ const Register = props => {
               onChange={e => setEmail(e.target.value)}
             />
           </Form.Field>
-
           <Form.Field>
-            <label>Password</label>
+            <label>Date of birth</label>
             <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
+              name="dob"
+              value={dob}
+              onChange={e => setDob(e.target.value)}
             />
           </Form.Field>
 
-          <Button type="submit">Submit</Button>
+          <Form.Field>
+            <label>Mobile Number</label>
+            <input
+              name="tel"
+              value={tel}
+              onChange={e => setTel(e.target.value)}
+            />
+          </Form.Field>
+
+          <Form.Field>
+            <label>Address</label>
+            <input
+              type="address"
+              name="address"
+              value={address}
+              onChange={e => setAddress(e.target.value)}
+            />
+          </Form.Field>
+
+          <Form.Field>
+            <label>Country</label>
+            <input
+              type="country"
+              name="country"
+              value={country}
+              onChange={e => setCountry(e.target.value)}
+            />
+          </Form.Field>
+
+          <Button type="submit">Add</Button>
         </Form>
       </Grid.Column>
     </Grid>
   );
 };
-export default withRouter(Register);
+
+export default withRouter(Profile);

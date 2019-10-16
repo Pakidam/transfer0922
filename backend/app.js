@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const config = require("./utils/config");
 const registerRouter = require("./controllers/register");
 const loginRouter = require("./controllers/login");
+const ratesRouter = require("./controllers/rates");
+const receiverRouter = require("./controllers/receiver");
 const morgan = require("morgan");
 
 mongoose
@@ -26,5 +28,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/register", registerRouter);
 app.use("/api/login", loginRouter);
+app.use("/api/rates", ratesRouter);
+app.use("/api/receiver", receiverRouter);
 
 module.exports = app;

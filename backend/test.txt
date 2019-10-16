@@ -1,45 +1,49 @@
-{
-      "firstName": "firstName",
-      "lastName": "lastName",
-      "email": "email@gmail.com",
-      "password": "password"
-    },
+senderIdid
+:
+5da4b72fd1012108f82808fe
+receivers
+:
+Array
+0
+:
+5da4b78ed1012108f82808ff
+1
+:
+5da4b7c7d1012108f8280900
+firstName
+:
+"firstName1"
+middleName
+:
+"middleName1"
+lastName
+:
+"lastName1"
+dob
+:
+2019-10-14T00:00:00.000+00:00
+email
+:
+"email1@gmail.com"
+password
+:
+"$2b$10$bxT/4tssHEjTnkaH2cqvEuXgcTtxb0PQf7Yh5o.S6tRfxFSYRDn/K"
+created
+:
+2019-10-14T17:58:07.828+00:00
+__v
+:
+2
 
-
+// receiver
 {
-      "firstName": "firstName1",
-      "lastName": "lastName1",
-      "email": "email1@gmail.com",
-      "password": "password"
-    },
-{
-      "firstName": "firstName2",
-      "lastName": "lastName2",
-      "email": "email2@gmail.com",
-      "password": "password"
-    },
-
-    {
-      "firstName": "firstName3",
-      "lastName": "lastName3",
-      "email": "email3@gmail.com",
-      "password": "password"
-    },
-      {
-      "firstName": "firstName4",
-      "lastName": "lastName4",
-      "email": "email4@gmail.com",
-      "password": "password"
-    },
-      {
-      "firstName": "firstName5",
-      "lastName": "lastName5",
-      "email": "email5@gmail.com",
-      "password": "password"
-    },
-      {
-      "firstName": "firstName6",
-      "lastName": "firstName6",
-      "email": "email6@gmail.com",
-      "password": "password"
+   "firstName": "Jimmy1",
+    "middleName": "Kelsy1",
+       "lastName": "Jagger1",
+    "email": "jimmy1@gmail.com",
+    "dob": "2019-10-14",
+    "tel": "07402734351",
+    "address": "7 Willow Way, Hatfield, Herts, AL10 9EF",
+    "country": "Togo",
+    "senderId":"5da4aaf7defe201ad4809c71"
     }

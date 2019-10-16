@@ -6,16 +6,14 @@ import { Link, withRouter } from "react-router-dom";
 const LoggedInNavbar = props => {
   const logOut = event => {
     event.preventDefault();
-    localStorage.removeItem("usertoken");
+    window.localStorage.removeItem("loggedUser");
     props.history.push(`/`);
   };
   return (
     <Grid.Column>
       <Menu size="huge">
-        <Menu.Item>Money Transfer</Menu.Item>
-
         <Menu.Item>
-          <Link to="/">Home</Link>
+          <Link to="/">Money Transfer</Link>
         </Menu.Item>
 
         <Menu.Item>
@@ -23,7 +21,7 @@ const LoggedInNavbar = props => {
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item>
-            <Link>Help</Link>
+            <Link to="/help">Help</Link>
           </Menu.Item>
           <Menu.Item>
             <Link to="/profile">Profile</Link>

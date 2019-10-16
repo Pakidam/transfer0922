@@ -5,7 +5,7 @@ const Sender = require("../models/sender");
 //get list of all users
 registerRouter.get("/list", async (req, res) => {
   const senders = await Sender.find({});
-  res.send(senders);
+  res.json(senders.map(u => u.toJSON()));
 });
 
 registerRouter.post("/", async (req, res, next) => {
